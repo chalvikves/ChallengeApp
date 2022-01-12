@@ -30,9 +30,11 @@ class _HomeState extends State<Home> {
         extendBodyBehindAppBar: true,
         drawer: drawerYes(),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const Spacer(),
             Padding(
-              padding: const EdgeInsets.all(40.0),
+              padding: const EdgeInsets.fromLTRB(40.0, 40.0, 40.0, 0.0),
               child: Center(
                 child: Text(
                   'Ta över 10000 steg för det är bra för din hälsa',
@@ -40,15 +42,32 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            const Spacer(),
             SliderButton(
               action: () => print('working'),
               label: Text(
                 'Slide to complete',
                 style: GoogleFonts.jost(
-                  fontSize: 24.0,
+                  fontSize: 20.0,
+                  color: Colors.grey,
                 ),
               ),
+              alignLabel: const Alignment(0.3, 0),
+              icon: const Icon(
+                Icons.check,
+                size: 30,
+                color: Colors.green,
+              ),
+              vibrationFlag: false,
+              shimmer: false,
+              height: 50,
+              buttonSize: 40,
+              backgroundColor: Colors.white,
+              buttonColor: Colors.grey[350]!,
             ),
+            const SizedBox(
+              height: 100.0,
+            )
           ],
         ),
       ),
