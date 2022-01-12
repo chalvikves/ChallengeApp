@@ -51,7 +51,7 @@ class _SettingsViewState extends State<SettingsView> {
                       children: [
                         Text(
                           'New challenge every day:',
-                          style: GoogleFonts.jost(fontSize: 24.0),
+                          style: GoogleFonts.jost(fontSize: 16.0),
                         ),
                         Switch(
                           value: _challengeEachDaySwitch,
@@ -66,7 +66,7 @@ class _SettingsViewState extends State<SettingsView> {
                       children: [
                         Text(
                           'New challenge every month:',
-                          style: GoogleFonts.jost(fontSize: 24.0),
+                          style: GoogleFonts.jost(fontSize: 16.0),
                         ),
                         Switch(
                           value: _challengeEachMonthSwitch,
