@@ -27,10 +27,10 @@ class _CaledarViewState extends State<CaledarView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: Colors.black,
+        foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
       ),
       extendBodyBehindAppBar: false,
-      drawer: drawerYes(),
+      drawer: drawerYes(context),
       backgroundColor: Theme.of(context).backgroundColor,
       body: CalendarCarousel(
         firstDayOfWeek: 1,
@@ -107,8 +107,11 @@ class _CaledarViewState extends State<CaledarView> {
           }
         },
         onDayPressed: (DateTime date, List events) {
-          setState(() => _currentDate = date);
+          setState(() {
+            _currentDate = date;
+          });
         },
+        targetDateTime: _currentDate,
         selectedDateTime: _currentDate,
         selectedDayButtonColor: Colors.grey[350]!,
         selectedDayTextStyle: TextStyle(

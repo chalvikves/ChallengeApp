@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget drawerYes() {
+Widget drawerYes(BuildContext context) {
+  // TODO:
+  // * Fix text with theme color to follow darkmode
   return Drawer(
+    backgroundColor: Theme.of(context).backgroundColor,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -22,14 +25,11 @@ Widget drawerYes() {
                     const SizedBox(height: 10.0),
                     Text(
                       'Viktor Vestlund',
-                      style: GoogleFonts.jost(fontSize: 24.0),
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                     Text(
                       '@vikves',
-                      style: GoogleFonts.jost(
-                        fontSize: 14.0,
-                        color: Colors.grey,
-                      ),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     const SizedBox(
                       height: 5.0,
@@ -41,16 +41,11 @@ Widget drawerYes() {
                           children: [
                             Text(
                               '${15}',
-                              style: GoogleFonts.jost(
-                                fontSize: 14.0,
-                              ),
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                             Text(
                               ' day streak',
-                              style: GoogleFonts.jost(
-                                fontSize: 14.0,
-                                color: Colors.grey,
-                              ),
+                              style: Theme.of(context).textTheme.headline6,
                             )
                           ],
                         ),
@@ -59,16 +54,11 @@ Widget drawerYes() {
                           children: [
                             Text(
                               '${3}',
-                              style: GoogleFonts.jost(
-                                fontSize: 14.0,
-                              ),
+                              style: Theme.of(context).textTheme.bodyText1,
                             ),
                             Text(
                               ' month streak',
-                              style: GoogleFonts.jost(
-                                fontSize: 14.0,
-                                color: Colors.grey,
-                              ),
+                              style: Theme.of(context).textTheme.headline6,
                             )
                           ],
                         ),
@@ -140,11 +130,11 @@ class DrawerRow extends StatelessWidget {
           const SizedBox(width: 15),
           Text(
             title,
-            style: GoogleFonts.jost(fontSize: 16.0),
+            style: Theme.of(context).textTheme.bodyText2,
           )
         ],
       ),
-      style: TextButton.styleFrom(primary: Colors.black),
+      style: TextButton.styleFrom(primary: Theme.of(context).focusColor),
     );
   }
 }
