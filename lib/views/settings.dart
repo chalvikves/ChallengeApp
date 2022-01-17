@@ -46,14 +46,12 @@ class SettingsView extends StatelessWidget {
                       TitleSwitch(
                         switchBool: model.challengeEachDaySwitch,
                         title: 'New challenge every day:',
-                        onChanged: (val) =>
-                            model.toggleSwitch(model.challengeEachDaySwitch),
+                        onChanged: (val) => model.toggleChallengeDay(),
                       ),
                       TitleSwitch(
                         switchBool: model.chooseDaySwitch,
                         title: 'Choose days for a new challenge:',
-                        onChanged: (val) =>
-                            model.toggleSwitch(model.chooseDaySwitch),
+                        onChanged: (val) => model.toggleChooseDay(),
                       ),
                       model.chooseDaySwitch
                           ? Container(
@@ -93,8 +91,7 @@ class SettingsView extends StatelessWidget {
                       TitleSwitch(
                         switchBool: model.challengeEachMonthSwitch,
                         title: 'New challenge every month:',
-                        onChanged: (val) =>
-                            model.toggleSwitch(model.challengeEachMonthSwitch),
+                        onChanged: (val) => model.toggleChallengeMonth(),
                       ),
                     ],
                   ),
@@ -125,20 +122,18 @@ class SettingsView extends StatelessWidget {
                         switchBool: model.mindsetSwitch,
                         title: 'Mindset',
                         onChanged: (val) {
-                          model.toggleMindset;
+                          model.toggleMindset();
                         },
                       ),
                       TitleSwitch(
                         switchBool: model.healthSwitch,
                         title: 'Health',
-                        onChanged: (val) =>
-                            model.toggleSwitch(model.healthSwitch),
+                        onChanged: (val) => model.toggleHealth(),
                       ),
                       TitleSwitch(
                         switchBool: model.workoutSwitch,
                         title: 'Workout',
-                        onChanged: (val) =>
-                            model.toggleSwitch(model.workoutSwitch),
+                        onChanged: (val) => model.toggleWorkout(),
                       )
                     ],
                   ),

@@ -6,5 +6,6 @@ class CalendarViewModel extends BaseViewModel {
 
   void setCurrentDate(DateTime date) {
     _currentDate = date;
+    notifyListeners();
   }
 }

@@ -6,5 +6,6 @@ class HomeViewModel extends BaseViewModel {
 
   void toggleCompleted() {
     _completed = !_completed;
+    notifyListeners();
   }
 }
