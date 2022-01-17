@@ -4,7 +4,7 @@ enum Difficulty { easy, medium, hard }
 
 enum Categories { mindset, health, workout }
 
-enum State { ongoing, complete, incomplete, notStarted }
+enum State { started, complete, stopped, notStarted }
 
 class Challenge {
   final String challenge;
@@ -19,6 +19,14 @@ class Challenge {
 
   void complete(Challenge chall) {
     chall.state = State.complete;
+  }
+
+  void start(Challenge chall) {
+    chall.state = State.started;
+  }
+
+  void stop(Challenge chall) {
+    chall.state = State.stopped;
   }
 
   final List<Challenge> _oneDayChallenges = [
