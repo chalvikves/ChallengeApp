@@ -4,6 +4,16 @@
 * Implement SharedPreferences
 * More types of challenges
 * List of challenges per type
+* Stacked theme manager
+* Calender för challenges
+    * Grön för complete
+    * Blå för pågående
+    * Röd för not completed
+* Swipe to complete
+* Implementera user?
+* Streak
+* Doneringsknapp
+* Hem visar challenges
 * <s>Model for challenges 
     * String: Challenge
     * List of strings: Category
