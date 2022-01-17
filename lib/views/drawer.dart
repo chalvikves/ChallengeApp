@@ -5,7 +5,7 @@ Widget drawerYes(BuildContext context) {
   // TODO:
   // * Fix text with theme color to follow darkmode
   return Drawer(
-    backgroundColor: Theme.of(context).backgroundColor,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

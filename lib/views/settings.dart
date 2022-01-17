@@ -44,7 +44,7 @@ class _SettingsViewState extends State<SettingsView> {
       ),
       extendBodyBehindAppBar: false,
       drawer: drawerYes(context),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -62,11 +62,12 @@ class _SettingsViewState extends State<SettingsView> {
                 color: Theme.of(context).backgroundColor,
               ),
               padding: const EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
-              height: 250,
+              height: 200,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
+                    const Text('Settings:'),
                     TitleSwitch(
                       switchBool: _challengeEachDaySwitch,
                       title: 'New challenge every day:',

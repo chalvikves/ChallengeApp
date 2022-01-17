@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.fromLTRB(40.0, 40.0, 40.0, 0.0),
             child: Center(
               child: Text(
-                'Ta över 10000 steg för det är bra för din hälsa',
+                'Ta över 10000 steg för det är bra för din hälsa hell\'t',
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),

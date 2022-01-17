@@ -31,7 +31,7 @@ class _CaledarViewState extends State<CaledarView> {
       ),
       extendBodyBehindAppBar: false,
       drawer: drawerYes(context),
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: CalendarCarousel(
         firstDayOfWeek: 1,
         todayButtonColor: Colors.red,
