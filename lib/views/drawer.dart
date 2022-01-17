@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:challengeapp/global/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -72,19 +74,19 @@ Widget drawerYes(BuildContext context) {
             const DrawerRow(
               title: 'Home',
               icon: Icons.house_rounded,
-              path: '/',
+              path: Home(),
             ),
             const Divider(),
             const DrawerRow(
               title: 'Calendar',
               icon: Icons.calendar_today_rounded,
-              path: '/calendar',
+              path: CalendarView(),
             ),
             const Divider(),
             const DrawerRow(
               title: 'Settings',
               icon: Icons.settings,
-              path: '/settings',
+              path: SettingsView(),
             ),
           ],
         ),
@@ -110,7 +112,7 @@ Widget drawerYes(BuildContext context) {
 class DrawerRow extends StatelessWidget {
   final String title;
   final IconData? icon;
-  final String path;
+  final PageRouteInfo path;
 
   const DrawerRow({
     Key? key,
@@ -122,7 +124,7 @@ class DrawerRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () => Navigator.pushNamed(context, path),
+      onPressed: () => AutoRouter.of(context).push(path),
       child: Row(
         children: [
           const SizedBox(width: 10),
