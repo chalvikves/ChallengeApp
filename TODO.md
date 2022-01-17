@@ -14,6 +14,7 @@
 * Streak
 * Doneringsknapp
 * Hem visar challenges
+* Knappar för att starta/stoppa challenge, byt challenge, complete challenge?
 * <s>Model for challenges 
     * String: Challenge
     * List of strings: Category
