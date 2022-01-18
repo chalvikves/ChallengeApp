@@ -1,6 +1,6 @@
 #TODO
 
-* <s>Move state things to viewmodel (By implementing Stacked)</s>
+* 
 * Implement SharedPreferences
 * More types of challenges
 * List of challenges per type
@@ -9,11 +9,18 @@
     * Grön för complete
     * Blå för pågående
     * Röd för not completed
+* Streak 
+* Doneringsknapp går till någon sida
+* Challenge till service
+
+
+
+* <s>Move state things to viewmodel (By implementing Stacked)</s>
 * <s>Swipe to complete</s>
 * <s>Implementera user?</s> NO
-* Streak 
+
 * <s>Doneringsknapp</s>
-* Doneringsknapp går till någon sida
+
 * <s>Hem visar challenges</s>
 * <s>Knappar för att starta/stoppa challenge, byt challenge, complete challenge?</s>
 * <s>Model for challenges 
