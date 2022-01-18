@@ -19,6 +19,9 @@ class SettingsViewModel extends BaseViewModel {
   bool _chooseDaySwitch = false;
   bool get chooseDaySwitch => _chooseDaySwitch;
   void toggleChooseDay() {
+    if (_challengeEachDaySwitch) {
+      toggleChallengeDay();
+    }
     _chooseDaySwitch = !_chooseDaySwitch;
     notifyListeners();
   }
