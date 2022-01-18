@@ -36,8 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.2.0
   flutter_calendar_carousel: ^2.1.0
-  vibration: ^1.7.4-nullsafety.0
-  shimmer: ^2.0.0
   stacked: ^2.2.7+1
   auto_route: ^3.2.1
   stacked_services: ^0.8.16

@@ -37,7 +37,7 @@ class SettingsView extends StatelessWidget {
                   color: Theme.of(context).backgroundColor,
                 ),
                 padding: const EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
-                height: 200,
+                height: model.chooseDaySwitch ? 240 : 200,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(

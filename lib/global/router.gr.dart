@@ -23,9 +23,9 @@ class AppRouter extends _i4.RootStackRouter {
 
   @override
   final Map<String, _i4.PageFactory> pagesMap = {
-    Home.name: (routeData) {
+    HomeView.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.Home());
+          routeData: routeData, child: const _i1.HomeView());
     },
     CalendarView.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
@@ -39,18 +39,18 @@ class AppRouter extends _i4.RootStackRouter {
 
   @override
   List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(Home.name, path: '/'),
+        _i4.RouteConfig(HomeView.name, path: '/'),
         _i4.RouteConfig(CalendarView.name, path: '/calendar-view'),
         _i4.RouteConfig(SettingsView.name, path: '/settings-view')
       ];
 }
 
 /// generated route for
-/// [_i1.Home]
-class Home extends _i4.PageRouteInfo<void> {
-  const Home() : super(Home.name, path: '/');
+/// [_i1.HomeView]
+class HomeView extends _i4.PageRouteInfo<void> {
+  const HomeView() : super(HomeView.name, path: '/');
 
-  static const String name = 'Home';
+  static const String name = 'HomeView';
 }
 
 /// generated route for

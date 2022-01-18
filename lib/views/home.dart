@@ -1,22 +1,20 @@
+import 'package:challengeapp/static/challenges.dart';
 import 'package:challengeapp/viewmodels/homeViewModel.dart';
 import 'package:challengeapp/views/drawer.dart';
-import 'package:challengeapp/views/widgets/slider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeView extends StatelessWidget {
+  const HomeView({Key? key}) : super(key: key);
 
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
+      //initialiseSpecialViewModelsOnce: true,
+      disposeViewModel: false,
+      onModelReady: (model) => model.initialise(),
+      fireOnModelReadyOnce: true,
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -30,46 +28,65 @@ class _HomeState extends State<Home> {
           children: [
             const Spacer(),
             Padding(
-              padding: const EdgeInsets.fromLTRB(40.0, 40.0, 40.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(50.0, 40.0, 40.0, 0.0),
               child: Center(
                 child: Text(
-                  'Ta över 10000 steg för det är bra för din hälsa hell\'t',
+                  model.currentChallenge.challenge!,
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ),
             ),
             const Spacer(),
-            model.completed
-                ? Center(
-                    child: Text(
-                      'Completed todays challenge! Nice work!',
-                      style: Theme.of(context).textTheme.bodyText2,
+            model.currentChallenge.state == ChallengeState.started
+                ? ElevatedButton(
+                    onPressed: () => model.stop(),
+                    child: const Text('Stop challenge'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red[800],
+                      fixedSize: const Size(170, 40),
                     ),
                   )
-                : SliderButton(
-                    action: () => model.toggleCompleted(),
-                    label: Text(
-                      'Slide to complete',
-                      style: GoogleFonts.jost(
-                        fontSize: 20.0,
-                        color: Theme.of(context).hintColor,
-                      ),
+                : ElevatedButton(
+                    onPressed: () => model.start(),
+                    child: const Text('Start challenge'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue[900],
+                      fixedSize: const Size(170, 40),
                     ),
-                    alignLabel: const Alignment(0.3, 0),
-                    icon: const Icon(
-                      Icons.check,
-                      size: 30,
-                      color: Colors.green,
-                    ),
-                    vibrationFlag: false,
-                    shimmer: false,
-                    height: 50,
-                    buttonSize: 40,
-                    backgroundColor: Theme.of(context).focusColor,
-                    buttonColor: Theme.of(context).buttonColor,
                   ),
             const SizedBox(
-              height: 100.0,
+              height: 15,
+            ),
+            ElevatedButton(
+              onPressed: () => model.newChallenge(),
+              child: const Text('New challenge'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue[900],
+                fixedSize: const Size(170, 40),
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            model.currentChallenge.state == ChallengeState.complete
+                ? ElevatedButton(
+                    onPressed: () => null,
+                    child: const Text('Completed!'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.green,
+                      fixedSize: const Size(170, 40),
+                    ),
+                  )
+                : ElevatedButton(
+                    onPressed: () => model.complete(),
+                    child: const Text('Complete challenge'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue[900],
+                      fixedSize: const Size(170, 40),
+                    ),
+                  ),
+            const SizedBox(
+              height: 60.0,
             )
           ],
         ),

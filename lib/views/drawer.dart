@@ -74,7 +74,7 @@ Widget drawerYes(BuildContext context) {
             const DrawerRow(
               title: 'Home',
               icon: Icons.house_rounded,
-              path: Home(),
+              path: HomeView(),
             ),
             const Divider(),
             const DrawerRow(

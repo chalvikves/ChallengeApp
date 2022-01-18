@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class SettingsViewModel extends BaseViewModel {
-  bool _challengeEachDaySwitch = false;
+  bool _challengeEachDaySwitch = true;
   bool get challengeEachDaySwitch => _challengeEachDaySwitch;
   void toggleChallengeDay() {
     _challengeEachDaySwitch = !_challengeEachDaySwitch;
@@ -22,29 +23,24 @@ class SettingsViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  bool _mindsetSwitch = false;
+  bool _mindsetSwitch = true;
   bool get mindsetSwitch => _mindsetSwitch;
   void toggleMindset() {
     _mindsetSwitch = !_mindsetSwitch;
     notifyListeners();
   }
 
-  bool _healthSwitch = false;
+  bool _healthSwitch = true;
   bool get healthSwitch => _healthSwitch;
   void toggleHealth() {
     _healthSwitch = !_healthSwitch;
     notifyListeners();
   }
 
-  bool _workoutSwitch = false;
+  bool _workoutSwitch = true;
   bool get workoutSwitch => _workoutSwitch;
   void toggleWorkout() {
     _workoutSwitch = !_workoutSwitch;
-    notifyListeners();
-  }
-
-  void toggleSwitch(bool togSwitch) {
-    togSwitch = !togSwitch;
     notifyListeners();
   }
 
@@ -62,6 +58,7 @@ class SettingsViewModel extends BaseViewModel {
   void setDayOfWeek(String i) {
     _daysOfWeekChallenge[_daysOfWeek.indexOf(i)] =
         !_daysOfWeekChallenge[_daysOfWeek.indexOf(i)];
+    notifyListeners();
   }
 
   final List<String> _daysOfWeek = [
@@ -74,4 +71,5 @@ class SettingsViewModel extends BaseViewModel {
     'Sun'
   ];
   List<String> get daysOfWeek => _daysOfWeek;
+  Map<int, String> get daysOfWeekMap => _daysOfWeek.asMap();
 }

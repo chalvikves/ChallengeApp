@@ -6,7 +6,7 @@ import 'package:challengeapp/views/settings.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: Home, initial: true),
+    AutoRoute(page: HomeView, initial: true),
     AutoRoute(page: CalendarView),
     AutoRoute(page: SettingsView),
   ],
