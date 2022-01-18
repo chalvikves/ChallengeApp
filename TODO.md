@@ -10,7 +10,7 @@
     * Blå för pågående
     * Röd för not completed
 * <s>Swipe to complete</s>
-* Implementera user? NO
+* <s>Implementera user?</s> NO
 * Streak 
 * <s>Doneringsknapp</s>
 * Doneringsknapp går till någon sida
