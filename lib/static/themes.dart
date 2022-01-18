@@ -22,7 +22,7 @@ class CustomTheme with ChangeNotifier {
       textTheme: TextTheme(
         headline4: GoogleFonts.jost(fontSize: 32, color: Colors.black),
         bodyText2: GoogleFonts.jost(fontSize: 16, color: Colors.black),
-        bodyText1: GoogleFonts.jost(fontSize: 14, color: Colors.black),
+        bodyText1: GoogleFonts.jost(fontSize: 18, color: Colors.black),
         headline5: GoogleFonts.jost(fontSize: 24, color: Colors.black),
         headline6: GoogleFonts.jost(fontSize: 14, color: Colors.grey),
       ),
@@ -43,9 +43,9 @@ class CustomTheme with ChangeNotifier {
       textTheme: TextTheme(
         headline4: GoogleFonts.jost(fontSize: 32, color: Colors.white),
         bodyText2: GoogleFonts.jost(fontSize: 16, color: Colors.white),
-        bodyText1: GoogleFonts.jost(fontSize: 14, color: Colors.white),
+        bodyText1: GoogleFonts.jost(fontSize: 18, color: Colors.white),
         headline5: GoogleFonts.jost(fontSize: 24, color: Colors.white),
-        headline6: GoogleFonts.jost(fontSize: 14, color: Colors.grey),
+        headline6: GoogleFonts.jost(fontSize: 18, color: Colors.grey),
       ),
       hintColor: Colors.grey[700],
       focusColor: Colors.white,

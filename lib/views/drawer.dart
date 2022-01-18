@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Widget drawerYes(BuildContext context) {
-  // TODO:
-  // * Fix text with theme color to follow darkmode
   return Drawer(
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     child: Column(
@@ -17,56 +15,38 @@ Widget drawerYes(BuildContext context) {
               padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
               child: SizedBox(
                 width: double.maxFinite,
+                height: double.maxFinite,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CircleAvatar(
-                      child: Icon(Icons.person),
-                      radius: 20,
-                    ),
-                    const SizedBox(height: 10.0),
-                    Text(
-                      'Viktor Vestlund',
-                      style: Theme.of(context).textTheme.headline5,
-                    ),
-                    Text(
-                      '@vikves',
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                    const SizedBox(
-                      height: 5.0,
+                    const Spacer(
+                      flex: 3,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              '${15}',
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                            Text(
-                              ' day streak',
-                              style: Theme.of(context).textTheme.headline6,
-                            )
-                          ],
+                        Text(
+                          'Awesome! You have a',
+                          style: Theme.of(context).textTheme.bodyText1,
                         ),
-                        const Spacer(),
-                        Row(
-                          children: [
-                            Text(
-                              '${3}',
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),
-                            Text(
-                              ' month streak',
-                              style: Theme.of(context).textTheme.headline6,
-                            )
-                          ],
-                        ),
-                        const Spacer(),
                       ],
-                    )
+                    ),
+                    const Spacer(),
+                    Row(
+                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          '${15}',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        Text(
+                          ' day streak',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                      ],
+                    ),
+                    const Spacer(
+                      flex: 3,
+                    ),
                   ],
                 ),
               ),
