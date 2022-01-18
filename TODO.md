@@ -9,12 +9,13 @@
     * Grön för complete
     * Blå för pågående
     * Röd för not completed
-* Swipe to complete
-* Implementera user?
-* Streak
-* Doneringsknapp
-* Hem visar challenges
-* Knappar för att starta/stoppa challenge, byt challenge, complete challenge?
+* <s>Swipe to complete</s>
+* Implementera user? NO
+* Streak 
+* <s>Doneringsknapp</s>
+* Doneringsknapp går till någon sida
+* <s>Hem visar challenges</s>
+* <s>Knappar för att starta/stoppa challenge, byt challenge, complete challenge?</s>
 * <s>Model for challenges 
     * String: Challenge
     * List of strings: Category
