@@ -106,7 +106,9 @@ class _CalendarViewState extends State<CalendarView> {
           },
           targetDateTime: model.currentDate,
           selectedDateTime: model.currentDate,
-          selectedDayButtonColor: Colors.grey[350]!,
+          selectedDayButtonColor: Colors.transparent, //Colors.grey[350]!,
+          selectedDayBorderColor: Colors.pink,
+          daysHaveCircularBorder: true,
           selectedDayTextStyle: TextStyle(
               color: (model.currentDate.weekday == 6 ||
                       model.currentDate.weekday == 7)
@@ -114,7 +116,7 @@ class _CalendarViewState extends State<CalendarView> {
                           Brightness.light
                       ? Colors.red
                       : Colors.redAccent)
-                  : Colors.black),
+                  : Colors.white),
         ),
       ),
     );

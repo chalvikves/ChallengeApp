@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:challengeapp/global/router.gr.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 Widget drawerYes(BuildContext context) {
   return Drawer(
@@ -74,8 +73,13 @@ Widget drawerYes(BuildContext context) {
           padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
           child: Column(
             children: [
-              const Text(
-                  'If you like my work and want to support me press the button below <3'),
+              Text(
+                'If you like my work and want to support me press the button below <3',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
               ElevatedButton(
                 onPressed: () => print('hi'),
                 child: const Text('Donate here <3'),

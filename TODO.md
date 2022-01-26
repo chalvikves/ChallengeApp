@@ -1,6 +1,6 @@
 #TODO
 
-* 
+
 * Implement SharedPreferences
 * More types of challenges
 * List of challenges per type

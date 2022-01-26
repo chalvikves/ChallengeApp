@@ -11,9 +11,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
-      //initialiseSpecialViewModelsOnce: true,
+      onModelReady: (model) => model.init(),
       disposeViewModel: false,
-      onModelReady: (model) => model.initialise(),
       fireOnModelReadyOnce: true,
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
@@ -31,13 +30,13 @@ class HomeView extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(50.0, 40.0, 40.0, 0.0),
               child: Center(
                 child: Text(
-                  model.currentChallenge.challenge!,
+                  model.currentChallenge!.challenge!,
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ),
             ),
             const Spacer(),
-            model.currentChallenge.state == ChallengeState.started
+            model.currentChallenge!.state == ChallengeState.started
                 ? ElevatedButton(
                     onPressed: () => model.stop(),
                     child: const Text('Stop challenge'),
@@ -50,7 +49,7 @@ class HomeView extends StatelessWidget {
                     onPressed: () => model.start(),
                     child: const Text('Start challenge'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[900],
+                      primary: Colors.green,
                       fixedSize: const Size(170, 40),
                     ),
                   ),
@@ -68,7 +67,7 @@ class HomeView extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            model.currentChallenge.state == ChallengeState.complete
+            model.currentChallenge!.state == ChallengeState.complete
                 ? ElevatedButton(
                     onPressed: () => null,
                     child: const Text('Completed!'),

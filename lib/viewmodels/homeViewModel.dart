@@ -1,37 +1,39 @@
+import 'package:challengeapp/global/locator.dart';
+import 'package:challengeapp/services/challenge_service.dart';
 import 'package:challengeapp/static/challenges.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
-  Challenges? _challenge;
-  Challenge? _currentChallenge;
+  final _challengeService = locator<ChallengeService>();
 
-  void initialise() {
-    _challenge = Challenges();
-    _currentChallenge = _challenge!.getFirst();
+  void init() {
+    _challengeService.getCurrentChallenge();
     notifyListeners();
   }
 
   void stop() {
-    _challenge!.stop(_currentChallenge!);
+    _challengeService.stop();
     notifyListeners();
   }
 
   void start() {
-    if (_currentChallenge!.state != ChallengeState.complete) {
-      _challenge!.start(_currentChallenge!);
+    if (_challengeService.currentChallenge!.state != ChallengeState.complete) {
+      _challengeService.start();
       notifyListeners();
     }
   }
 
   void newChallenge() {
-    _currentChallenge = _challenge!.getRandom();
+    _challengeService.getRandom();
     notifyListeners();
   }
 
   void complete() {
-    _challenge!.complete(_currentChallenge!);
-    notifyListeners();
+    if (_challengeService.currentChallenge!.state == ChallengeState.started) {
+      _challengeService.complete();
+      notifyListeners();
+    }
   }
 
-  Challenge get currentChallenge => _currentChallenge!;
+  Challenge? get currentChallenge => _challengeService.currentChallenge;
 }
