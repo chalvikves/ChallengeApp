@@ -10,17 +10,15 @@ class Api {
   set currentChallenge(Challenge? challenge) {
     _currentChallenge!.state = ChallengeState.notStarted;
     _currentChallenge = challenge;
+    _currentChallenge!.selected = true;
   }
 
   void init() {
-    if (!_oneDayChallenges
-        .any((element) => element.state == ChallengeState.started)) {
+    if (!_oneDayChallenges.any((element) => element.selected!)) {
       _currentChallenge = getRandom();
-      _currentChallenge!.state = ChallengeState.started;
     } else {
-      _currentChallenge = _oneDayChallenges
-          .where((element) => element.state == ChallengeState.started)
-          .first;
+      _currentChallenge =
+          _oneDayChallenges.where((element) => element.selected!).first;
     }
   }
 
@@ -31,14 +29,17 @@ class Api {
 
   void complete() {
     _currentChallenge!.state = ChallengeState.complete;
+    _currentChallenge!.completeDate = DateTime.now();
   }
 
   void start() {
     _currentChallenge!.state = ChallengeState.started;
+    _currentChallenge!.startDate = DateTime.now();
   }
 
   void stop() {
     _currentChallenge!.state = ChallengeState.stopped;
+    _currentChallenge!.startDate = null;
   }
 }
 

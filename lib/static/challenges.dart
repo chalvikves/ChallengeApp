@@ -11,6 +11,7 @@ class Challenge {
   ChallengeState? state;
   DateTime? startDate;
   DateTime? completeDate;
+  bool? selected;
 
   Challenge({
     this.challenge,
