@@ -42,6 +42,8 @@ dependencies:
   get_it: ^7.2.0
   injectable: ^1.5.3
   shared_preferences: ^2.0.12
+  stacked_hooks: ^0.2.1+1
+  flutter_hooks: ^0.17.0
 
 dev_dependencies:
   flutter_test:

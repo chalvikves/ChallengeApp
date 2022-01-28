@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 class SettingsViewModel extends BaseViewModel {
   bool _challengeEachDaySwitch = true;
+
+  int _streak = 0;
+  int get streak => _streak;
+
+  void getStreak() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    _streak = _prefs.getInt('streak') ?? 0;
+  }
+
   bool get challengeEachDaySwitch => _challengeEachDaySwitch;
   void toggleChallengeDay() {
     _challengeEachDaySwitch = !_challengeEachDaySwitch;

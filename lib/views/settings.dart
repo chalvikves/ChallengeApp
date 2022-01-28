@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:challengeapp/viewmodels/settingsViewModel.dart';
-import 'package:challengeapp/views/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import 'package:challengeapp/global/router.gr.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -18,7 +19,103 @@ class SettingsView extends StatelessWidget {
           foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
         ),
         extendBodyBehindAppBar: false,
-        drawer: drawerYes(context),
+        drawer: Drawer(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          child: Column(
+            children: [
+              DrawerHeader(
+                padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  height: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Spacer(
+                        flex: 3,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Awesome! You have a',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            '${model.streak}',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          Text(
+                            ' day streak',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 3,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home_rounded,
+                  color: Theme.of(context).focusColor,
+                ),
+                title:
+                    Text('Home', style: Theme.of(context).textTheme.bodyText2),
+                onTap: () => AutoRouter.of(context).push(const HomeView()),
+              ),
+              const Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.calendar_today_rounded,
+                  color: Theme.of(context).focusColor,
+                ),
+                title: Text('Calendar',
+                    style: Theme.of(context).textTheme.bodyText2),
+                onTap: () => AutoRouter.of(context).push(const CalendarView()),
+              ),
+              const Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).focusColor,
+                ),
+                title: Text('Settings',
+                    style: Theme.of(context).textTheme.bodyText2),
+                onTap: () => AutoRouter.of(context).pop(),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 10.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'If you like my work and want to support me press the button below <3',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      onPressed: () => print('hi'),
+                      child: const Text('Donate here <3'),
+                      style:
+                          ElevatedButton.styleFrom(primary: Colors.pinkAccent),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.all(10.0),

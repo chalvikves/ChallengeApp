@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:challengeapp/global/router.gr.dart';
 import 'package:challengeapp/static/challenges.dart';
 import 'package:challengeapp/viewmodels/homeViewModel.dart';
 import 'package:challengeapp/views/drawer.dart';
@@ -21,22 +23,123 @@ class HomeView extends StatelessWidget {
           foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
         ),
         extendBodyBehindAppBar: true,
-        drawer: drawerYes(context),
+        drawer: Drawer(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          child: Column(
+            children: [
+              DrawerHeader(
+                padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  height: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Spacer(
+                        flex: 3,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Awesome! You have a',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            '${model.streak}',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          Text(
+                            ' day streak',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 3,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home_rounded,
+                  color: Theme.of(context).focusColor,
+                ),
+                title:
+                    Text('Home', style: Theme.of(context).textTheme.bodyText2),
+                onTap: () => AutoRouter.of(context).pop(),
+              ),
+              const Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.calendar_today_rounded,
+                  color: Theme.of(context).focusColor,
+                ),
+                title: Text('Calendar',
+                    style: Theme.of(context).textTheme.bodyText2),
+                onTap: () => AutoRouter.of(context).push(const CalendarView()),
+              ),
+              const Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).focusColor,
+                ),
+                title: Text('Settings',
+                    style: Theme.of(context).textTheme.bodyText2),
+                onTap: () => AutoRouter.of(context).push(const SettingsView()),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 10.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'If you like my work and want to support me press the button below <3',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      onPressed: () => print('hi'),
+                      child: const Text('Donate here <3'),
+                      style:
+                          ElevatedButton.styleFrom(primary: Colors.pinkAccent),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(50.0, 40.0, 40.0, 0.0),
-              child: Center(
-                child: Text(
-                  model.currentChallenge!.challenge!,
-                  style: Theme.of(context).textTheme.headline4,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 300,
+                  child: Center(
+                    child: Text(
+                      model.currentChallenge!.challenge!,
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
             const Spacer(),
-            model.currentChallenge!.state == ChallengeState.started
+            /*model.currentChallenge!.state == ChallengeState.started
                 ? ElevatedButton(
                     onPressed: () => model.stop(),
                     child: const Text('Stop challenge'),
@@ -52,7 +155,7 @@ class HomeView extends StatelessWidget {
                       primary: Colors.green,
                       fixedSize: const Size(170, 40),
                     ),
-                  ),
+                  ),*/
             const SizedBox(
               height: 15,
             ),

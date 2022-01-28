@@ -1,5 +1,8 @@
 import 'dart:math';
 import 'package:challengeapp/static/challenges.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 
 class Api {
   List<Challenge> get oneDayChallenges => _oneDayChallenges;
@@ -11,11 +14,15 @@ class Api {
     _currentChallenge!.state = ChallengeState.notStarted;
     _currentChallenge = challenge;
     _currentChallenge!.selected = true;
+    _currentChallenge!.state = ChallengeState.started;
   }
 
   void init() {
     if (!_oneDayChallenges.any((element) => element.selected!)) {
       _currentChallenge = getRandom();
+      _currentChallenge!.selected = true;
+      _currentChallenge!.state = ChallengeState.started;
+      _currentChallenge!.startDate = DateTime.now();
     } else {
       _currentChallenge =
           _oneDayChallenges.where((element) => element.selected!).first;
@@ -23,8 +30,9 @@ class Api {
   }
 
   Challenge? getRandom() {
-    return _oneDayChallenges
-        .elementAt(Random().nextInt(_oneDayChallenges.length));
+    _currentChallenge =
+        _oneDayChallenges.elementAt(Random().nextInt(_oneDayChallenges.length));
+    return _currentChallenge;
   }
 
   void complete() {

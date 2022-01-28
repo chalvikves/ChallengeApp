@@ -20,5 +20,6 @@ class Challenge {
     this.state,
     this.startDate,
     this.completeDate,
+    this.selected = false,
   });
 }

@@ -9,9 +9,9 @@
     * Grön för complete
     * Blå för pågående
     * Röd för not completed
-* Streak 
+* Streak (SharedPreferences)
 * Doneringsknapp går till någon sida
-* Challenge till service
+* <s>Challenge till service</s>
 
 
 

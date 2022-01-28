@@ -2,6 +2,8 @@ import 'package:challengeapp/global/locator.dart';
 import 'package:challengeapp/services/api.dart';
 import 'package:challengeapp/static/challenges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 
 class ChallengeService {
   final _api = locator<Api>();
@@ -30,5 +32,9 @@ class ChallengeService {
 
   void stop() {
     _api.stop();
+  }
+
+  List<Challenge> getChallenges() {
+    return _api.oneDayChallenges;
   }
 }

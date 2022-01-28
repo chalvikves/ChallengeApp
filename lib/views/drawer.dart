@@ -1,97 +1,106 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:challengeapp/global/router.gr.dart';
+import 'package:challengeapp/viewmodels/drawerViewModel.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked_hooks/stacked_hooks.dart';
 
-Widget drawerYes(BuildContext context) {
-  return Drawer(
-    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          children: [
-            DrawerHeader(
-              padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                height: double.maxFinite,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Spacer(
-                      flex: 3,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Awesome! You have a',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          '${15}',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        Text(
-                          ' day streak',
-                          style: Theme.of(context).textTheme.headline6,
-                        ),
-                      ],
-                    ),
-                    const Spacer(
-                      flex: 3,
-                    ),
-                  ],
+class DrawerWidget extends HookViewModelWidget<DrawerViewModel> {
+  const DrawerWidget({Key? key}) : super(key: key, reactive: true);
+
+  @override
+  Widget buildViewModelWidget(BuildContext context, DrawerViewModel viewModel) {
+    return Drawer(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            children: [
+              DrawerHeader(
+                padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  height: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Spacer(
+                        flex: 3,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Awesome! You have a',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            '${viewModel.test}',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                          Text(
+                            ' day streak',
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 3,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const DrawerRow(
-              title: 'Home',
-              icon: Icons.house_rounded,
-              path: HomeView(),
-            ),
-            const Divider(),
-            const DrawerRow(
-              title: 'Calendar',
-              icon: Icons.calendar_today_rounded,
-              path: CalendarView(),
-            ),
-            const Divider(),
-            const DrawerRow(
-              title: 'Settings',
-              icon: Icons.settings,
-              path: SettingsView(),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
-          child: Column(
-            children: [
-              Text(
-                'If you like my work and want to support me press the button below <3',
-                style: Theme.of(context).textTheme.headline3,
+              const DrawerRow(
+                title: 'Home',
+                icon: Icons.house_rounded,
+                path: HomeView(),
               ),
-              const SizedBox(
-                height: 15,
+              const Divider(),
+              const DrawerRow(
+                title: 'Calendar',
+                icon: Icons.calendar_today_rounded,
+                path: CalendarView(),
               ),
-              ElevatedButton(
-                onPressed: () => print('hi'),
-                child: const Text('Donate here <3'),
-                style: ElevatedButton.styleFrom(primary: Colors.pinkAccent),
-              )
+              const Divider(),
+              const DrawerRow(
+                title: 'Settings',
+                icon: Icons.settings,
+                path: SettingsView(),
+              ),
             ],
           ),
-        ),
-      ],
-    ),
-  );
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+            child: Column(
+              children: [
+                Text(
+                  'If you like my work and want to support me press the button below <3',
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                ElevatedButton(
+                  onPressed: () => print('hi'),
+                  child: const Text('Donate here <3'),
+                  style: ElevatedButton.styleFrom(primary: Colors.pinkAccent),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+
+// SharedPreferences för streak
 
 class DrawerRow extends StatelessWidget {
   final String title;
