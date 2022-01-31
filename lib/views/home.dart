@@ -125,6 +125,24 @@ class HomeView extends StatelessWidget {
           children: [
             const Spacer(),
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Spacer(
+                  flex: 8,
+                ),
+                IconButton(
+                  onPressed: () => print('test'),
+                  icon: Icon(
+                    Icons.help_outline,
+                    color: Theme.of(context).focusColor,
+                  ),
+                ),
+                const Spacer(
+                  flex: 1,
+                ),
+              ],
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
