@@ -197,8 +197,8 @@ class CalendarView extends StatelessWidget {
           selectedDayBorderColor: Colors.pink[300]!,
           daysHaveCircularBorder: true,
           selectedDayTextStyle: GoogleFonts.jost(
-            color: (model.selectedDate!.weekday == 6 ||
-                    model.selectedDate!.weekday == 7)
+            color: (model.selectedDate?.weekday == 6 ||
+                    model.selectedDate?.weekday == 7)
                 ? (MediaQuery.of(context).platformBrightness == Brightness.light
                     ? Colors.red
                     : Colors.redAccent)
