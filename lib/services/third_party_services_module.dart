@@ -10,8 +10,8 @@ abstract class ThirdPartyServicesModule {
   @lazySingleton
   ChallengeService get challengeService;
   //NavigationService get navigationService;
-  //@lazySingleton
-  //DialogService get dialogService;
+  @lazySingleton
+  DialogService get dialogService;
   //@lazySingleton
   //SnackbarService get snackbarService;
 }

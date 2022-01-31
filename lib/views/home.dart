@@ -131,7 +131,7 @@ class HomeView extends StatelessWidget {
                   flex: 8,
                 ),
                 IconButton(
-                  onPressed: () => print('test'),
+                  onPressed: () => model.callDialog(),
                   icon: Icon(
                     Icons.help_outline,
                     color: Theme.of(context).focusColor,
@@ -141,6 +141,9 @@ class HomeView extends StatelessWidget {
                   flex: 1,
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -175,34 +178,43 @@ class HomeView extends StatelessWidget {
                     ),
                   ),*/
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
             ElevatedButton(
               onPressed: () => model.newChallenge(),
-              child: const Text('New challenge'),
+              child: Text(
+                'New challenge',
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue[900],
-                fixedSize: const Size(170, 40),
+                fixedSize: const Size(200, 50),
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 20,
             ),
             model.currentChallenge!.state == ChallengeState.complete
                 ? ElevatedButton(
                     onPressed: () => null,
-                    child: const Text('Completed!'),
+                    child: Text(
+                      'Completed!',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.green,
-                      fixedSize: const Size(170, 40),
+                      fixedSize: const Size(200, 50),
                     ),
                   )
                 : ElevatedButton(
                     onPressed: () => model.complete(),
-                    child: const Text('Complete challenge'),
+                    child: Text(
+                      'Complete challenge',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.blue[900],
-                      fixedSize: const Size(170, 40),
+                      fixedSize: const Size(200, 50),
                     ),
                   ),
             const SizedBox(
