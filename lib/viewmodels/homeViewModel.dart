@@ -48,8 +48,8 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
-  Future<DialogResponse<dynamic>?> callDialog() async {
-    return await _dialogService.showDialog(
+  Future callDialog() async {
+    DialogResponse? response = await _dialogService.showDialog(
       title: 'Hi',
       description: 'Hi',
       cancelTitle: 'Cancel',

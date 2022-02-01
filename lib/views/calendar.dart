@@ -21,6 +21,13 @@ class CalendarView extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
+          actions: [
+            Container(
+              height: double.minPositive,
+              //padding: const EdgeInsets.only(top: 15),
+              child: Center(child: Text('5/28 days completed')),
+            )
+          ],
         ),
         extendBodyBehindAppBar: false,
         drawer: Drawer(
@@ -121,91 +128,159 @@ class CalendarView extends StatelessWidget {
           ),
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: CalendarCarousel<Event>(
-          firstDayOfWeek: 1,
-          todayButtonColor: Colors.pink[300]!, //Colors.pink.withOpacity(0.2),
-          todayBorderColor: Colors.transparent,
-          todayTextStyle: TextStyle(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
-          ),
-          markedDatesMap: model.eventList,
-          markedDateShowIcon: true,
-          markedDateIconBuilder: (event) {
-            return event.icon ?? Icon(Icons.gamepad);
-          },
-          headerTextStyle: GoogleFonts.jost(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
-            fontSize: 20.0,
-          ),
-          iconColor:
-              MediaQuery.of(context).platformBrightness == Brightness.light
-                  ? Colors.black
-                  : Colors.white,
-          weekendTextStyle: GoogleFonts.jost(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.red
-                : Colors.redAccent,
-          ),
-          weekdayTextStyle: GoogleFonts.jost(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
-          ),
-          daysTextStyle: GoogleFonts.jost(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
-          ),
-          prevDaysTextStyle: GoogleFonts.jost(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.grey
-                : Colors.grey[800],
-          ),
-          nextDaysTextStyle: GoogleFonts.jost(
-            color: MediaQuery.of(context).platformBrightness == Brightness.light
-                ? Colors.grey
-                : Colors.grey[800],
-          ),
-          customDayBuilder: (
-            bool isSelectable,
-            int index,
-            bool isSelectedDay,
-            bool isToday,
-            bool isPrevMonthDay,
-            TextStyle textStyle,
-            bool isNextMonthDay,
-            bool isThisMonthDay,
-            DateTime day,
-          ) {
-            var listOfKeys = model.eventList.events.keys.toList();
-            if (listOfKeys.any((element) =>
-                (element.day == day.day) && (element.month == day.month))) {
-              return const Text("",
-                  style: TextStyle(color: Colors.transparent));
-            }
-          },
-          onDayPressed: (DateTime date, List events) {
-            model.setSelectedDate(date);
-          },
-          targetDateTime: model.currentDate,
-          selectedDateTime: model.selectedDate,
-          selectedDayButtonColor: Colors.transparent, //Colors.grey[350]!,
-          selectedDayBorderColor: Colors.pink[300]!,
-          daysHaveCircularBorder: true,
-          selectedDayTextStyle: GoogleFonts.jost(
-            color: (model.selectedDate?.weekday == 6 ||
-                    model.selectedDate?.weekday == 7)
-                ? (MediaQuery.of(context).platformBrightness == Brightness.light
-                    ? Colors.red
-                    : Colors.redAccent)
-                : MediaQuery.of(context).platformBrightness == Brightness.light
+        body: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 2,
+              child: CalendarCarousel<Event>(
+                firstDayOfWeek: 1,
+                todayButtonColor:
+                    Colors.pink[300]!, //Colors.pink.withOpacity(0.2),
+                todayBorderColor: Colors.transparent,
+                todayTextStyle: TextStyle(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                ),
+                markedDatesMap: model.eventList,
+                markedDateShowIcon: true,
+                markedDateIconBuilder: (event) {
+                  return event.icon ?? Icon(Icons.gamepad);
+                },
+                headerTextStyle: GoogleFonts.jost(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                  fontSize: 20.0,
+                ),
+                iconColor: MediaQuery.of(context).platformBrightness ==
+                        Brightness.light
                     ? Colors.black
                     : Colors.white,
-          ),
+                weekendTextStyle: GoogleFonts.jost(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.red
+                      : Colors.redAccent,
+                ),
+                weekdayTextStyle: GoogleFonts.jost(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                ),
+                daysTextStyle: GoogleFonts.jost(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.black
+                      : Colors.white,
+                ),
+                prevDaysTextStyle: GoogleFonts.jost(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.grey
+                      : Colors.grey[800],
+                ),
+                nextDaysTextStyle: GoogleFonts.jost(
+                  color: MediaQuery.of(context).platformBrightness ==
+                          Brightness.light
+                      ? Colors.grey
+                      : Colors.grey[800],
+                ),
+                customDayBuilder: (
+                  bool isSelectable,
+                  int index,
+                  bool isSelectedDay,
+                  bool isToday,
+                  bool isPrevMonthDay,
+                  TextStyle textStyle,
+                  bool isNextMonthDay,
+                  bool isThisMonthDay,
+                  DateTime day,
+                ) {
+                  var listOfKeys = model.eventList.events.keys.toList();
+                  if (listOfKeys.any((element) =>
+                      (element.day == day.day) &&
+                      (element.month == day.month))) {
+                    return const Text(
+                      "",
+                      style: TextStyle(color: Colors.transparent),
+                    );
+                  }
+                },
+                onDayPressed: (DateTime date, List<Event> events) {
+                  model.setSelectedDate(date);
+                  if (events.isNotEmpty) {
+                    model.dayHasEvent = true;
+                    model.descEvent(events.elementAt(0).title);
+                  } else {
+                    model.dayHasEvent = false;
+                  }
+                },
+                targetDateTime: model.currentDate,
+                selectedDateTime: model.selectedDate,
+                selectedDayButtonColor: Colors.transparent, //Colors.grey[350]!,
+                selectedDayBorderColor: Colors.pink[300]!,
+                daysHaveCircularBorder: true,
+                selectedDayTextStyle: GoogleFonts.jost(
+                  color: (model.selectedDate?.weekday == 6 ||
+                          model.selectedDate?.weekday == 7)
+                      ? (MediaQuery.of(context).platformBrightness ==
+                              Brightness.light
+                          ? Colors.red
+                          : Colors.redAccent)
+                      : MediaQuery.of(context).platformBrightness ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            model.dayHasEvent
+                ? Card(
+                    color: Theme.of(context).backgroundColor,
+                    child: ListTile(
+                      title: Text(
+                        'Challenge done:',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      subtitle: Text(
+                        model.title ?? '',
+                        style: GoogleFonts.jost(
+                            fontSize: 16, color: Colors.grey[600]),
+                      ),
+                      isThreeLine: true,
+                      /*trailing: Column(
+                        children: [
+                          const CircleAvatar(
+                            radius: 5,
+                            backgroundColor: Colors.red,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            'Hard',
+                            style: GoogleFonts.jost(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),*/
+                    ),
+                    margin: const EdgeInsets.all(10.0),
+                    elevation: 5.0,
+                  )
+                : const SizedBox(
+                    height: 0,
+                  ),
+          ],
         ),
       ),
     );

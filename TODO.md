@@ -1,7 +1,7 @@
 #TODO
 
 
-* Implement SharedPreferences
+* Implement Box
 * More types of challenges
 * List of challenges per type
 * Stacked theme manager
@@ -9,8 +9,16 @@
     * Grön för complete
     * Blå för pågående
     * Röd för not completed
-* Streak (SharedPreferences)
+* Streak (Box)
 * Doneringsknapp går till någon sida
+* Användaren får ändra tema?
+* Fixa färger
+* Fixa Dialog
+* Välkomstscreen
+* Settings
+* Days completed i calendar
+
+
 * <s>Challenge till service</s>
 
 
