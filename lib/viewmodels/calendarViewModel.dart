@@ -4,18 +4,19 @@ import 'package:challengeapp/static/challenges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 class CalendarViewModel extends BaseViewModel {
   final _challengeService = locator<ChallengeService>();
+  final Box box = Hive.box('challenge');
 
   int _streak = 0;
   int get streak => _streak;
 
   void getStreak() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _streak = _prefs.getInt('streak') ?? 0;
+    int? _streak = await box.get('streak') ?? 0;
   }
 
   DateTime _currentDate = DateTime.now();

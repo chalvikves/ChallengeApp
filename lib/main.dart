@@ -1,10 +1,19 @@
+import 'dart:io';
+
 import 'package:challengeapp/global/locator.dart';
 import 'package:challengeapp/global/router.gr.dart';
 import 'package:challengeapp/static/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+late Box box;
+Future<void> main() async {
   setupLocator();
+  await Hive.initFlutter();
+  box = await Hive.openBox('challenge');
+  box.put('streak', 1);
+  //Hive.registerAdapter(ChallengeAdapter());
   runApp(const MyApp());
 }
 

@@ -131,7 +131,7 @@ class HomeView extends StatelessWidget {
                   flex: 8,
                 ),
                 IconButton(
-                  onPressed: () => model.callDialog(),
+                  onPressed: () => print(model.streak),
                   icon: Icon(
                     Icons.help_outline,
                     color: Theme.of(context).focusColor,

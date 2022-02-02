@@ -5,21 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:hive/hive.dart';
 
 class HomeViewModel extends BaseViewModel {
   final _challengeService = locator<ChallengeService>();
   final _dialogService = locator<DialogService>();
+  late final Box box;
 
-  int _streak = 0;
-  int get streak => _streak;
+  //int _streak = 0;
+  int get streak => box.get('streak');
 
-  void getStreak() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _streak = _prefs.getInt('streak') ?? 0;
-  }
+  /*int getStreak() {
+    return box.get('streak');
+  }*/
 
   void init() {
     _challengeService.getCurrentChallenge();
+    box = Hive.box('challenge');
+    //_streak = getStreak();
     notifyListeners();
   }
 

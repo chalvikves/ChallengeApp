@@ -1,7 +1,7 @@
 #TODO
 
 
-* Implement Box
+<s>* Implement Box</s>
 * More types of challenges
 * List of challenges per type
 * Stacked theme manager
