@@ -93,8 +93,8 @@ class SettingsView extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText2),
                 onTap: () => AutoRouter.of(context).pop(),
               ),
-              const Spacer(),
-              Padding(
+              //const Spacer(),
+              /*Padding(
                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 10.0),
                 child: Column(
                   children: [
@@ -113,7 +113,7 @@ class SettingsView extends StatelessWidget {
                     )
                   ],
                 ),
-              ),
+              ),*/
             ],
           ),
         ),
@@ -235,6 +235,26 @@ class SettingsView extends StatelessWidget {
                       )
                     ],
                   ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20.0, 20.0, 10.0, 10.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'If you like my work and want to support me press the button below <3',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      onPressed: () => print('hi'),
+                      child: const Text('Donate here <3'),
+                      style:
+                          ElevatedButton.styleFrom(primary: Colors.pinkAccent),
+                    )
+                  ],
                 ),
               ),
             ],

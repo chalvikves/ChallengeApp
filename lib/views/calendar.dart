@@ -103,8 +103,8 @@ class CalendarView extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText2),
                 onTap: () => AutoRouter.of(context).push(const SettingsView()),
               ),
-              const Spacer(),
-              Padding(
+              //const Spacer(),
+              /*Padding(
                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 10.0),
                 child: Column(
                   children: [
@@ -123,7 +123,7 @@ class CalendarView extends StatelessWidget {
                     )
                   ],
                 ),
-              ),
+              ),*/
             ],
           ),
         ),
