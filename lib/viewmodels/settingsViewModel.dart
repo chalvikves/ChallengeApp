@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 class SettingsViewModel extends BaseViewModel {
   bool _challengeEachDaySwitch = true;
 
-  int _streak = 0;
-  int get streak => _streak;
+  late final Box box;
 
-  void getStreak() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _streak = _prefs.getInt('streak') ?? 0;
+  int get streak => box.get('streak');
+
+  void init() {
+    box = Hive.box('challenge');
+    notifyListeners();
   }
 
   bool get challengeEachDaySwitch => _challengeEachDaySwitch;

@@ -10,14 +10,9 @@ import 'package:stacked/stacked.dart';
 
 class CalendarViewModel extends BaseViewModel {
   final _challengeService = locator<ChallengeService>();
-  final Box box = Hive.box('challenge');
+  late final Box box;
 
-  int _streak = 0;
-  int get streak => _streak;
-
-  void getStreak() async {
-    int? _streak = await box.get('streak') ?? 0;
-  }
+  int get streak => box.get('streak');
 
   DateTime _currentDate = DateTime.now();
   DateTime get currentDate => _currentDate;
@@ -36,6 +31,7 @@ class CalendarViewModel extends BaseViewModel {
     _challengeService.getCurrentChallenge();
     _eventList = markedDays();
     _title = '';
+    box = Hive.box('challenge');
     notifyListeners();
   }
 
