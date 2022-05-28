@@ -18,14 +18,12 @@ class Api {
   }
 
   void init() {
-    if (!_oneDayChallenges.any((element) => element.selected!)) {
+    if (!_oneDayChallenges.any((element) => element.selected)) {
       _currentChallenge = getRandom();
       _currentChallenge!.selected = true;
-      _currentChallenge!.state = ChallengeState.started;
-      _currentChallenge!.startDate = DateTime.now();
     } else {
       _currentChallenge =
-          _oneDayChallenges.where((element) => element.selected!).first;
+          _oneDayChallenges.where((element) => element.selected).first;
     }
   }
 

@@ -23,7 +23,7 @@ class Challenge {
   //@HiveField(5)
   DateTime? completeDate;
   //@HiveField(6)
-  bool? selected;
+  bool selected;
 
   Challenge({
     this.challenge,

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:hive/hive.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
 
 class CalendarViewModel extends BaseViewModel {
@@ -27,11 +26,15 @@ class CalendarViewModel extends BaseViewModel {
 
   bool dayHasEvent = false;
 
+  late int? _dayInMonth;
+  int? get dayInMonth => _dayInMonth;
+
   void init() {
     _challengeService.getCurrentChallenge();
     _eventList = markedDays();
     _title = '';
     box = Hive.box('challenge');
+    _dayInMonth = daysInMonth(_currentDate.month, _currentDate.year);
     notifyListeners();
   }
 
@@ -117,5 +120,42 @@ class CalendarViewModel extends BaseViewModel {
     );
 
     return eventList;
+  }
+
+  int? daysInMonth(int monthNum, int year) {
+    List<int> monthLength = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    monthLength[0] = 31;
+    monthLength[2] = 31;
+    monthLength[4] = 31;
+    monthLength[6] = 31;
+    monthLength[7] = 31;
+    monthLength[9] = 31;
+    monthLength[11] = 31;
+    monthLength[3] = 30;
+    monthLength[8] = 30;
+    monthLength[5] = 30;
+    monthLength[10] = 30;
+
+    if (leapYear(year) == true) {
+      monthLength[1] = 29;
+    } else {
+      monthLength[1] = 28;
+    }
+    print(monthLength.elementAt(monthNum - 1));
+    return monthLength.elementAt(monthNum - 1);
+  }
+
+  bool leapYear(int year) {
+    bool leapYear = false;
+
+    bool leap = ((year % 100 == 0) && (year % 400 != 0));
+    if (leap == true) {
+      leapYear = false;
+    } else if (year % 4 == 0) {
+      leapYear = true;
+    }
+
+    return leapYear;
   }
 }

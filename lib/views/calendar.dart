@@ -25,7 +25,8 @@ class CalendarView extends StatelessWidget {
             Container(
               height: double.minPositive,
               //padding: const EdgeInsets.only(top: 15),
-              child: Center(child: Text('5/28 days completed')),
+              child:
+                  Center(child: Text('5/${model.dayInMonth} days completed')),
             )
           ],
         ),

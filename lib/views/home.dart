@@ -4,6 +4,7 @@ import 'package:challengeapp/static/challenges.dart';
 import 'package:challengeapp/viewmodels/homeViewModel.dart';
 import 'package:challengeapp/views/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeView extends StatelessWidget {
@@ -187,7 +188,10 @@ class HomeView extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyText2,
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue[900],
+                primary: MediaQuery.of(context).platformBrightness ==
+                        Brightness.light
+                    ? Colors.blue[400] //Colors.blue[700]
+                    : Colors.blueAccent, //Colors.blue[600],
                 fixedSize: const Size(200, 50),
               ),
             ),
@@ -213,7 +217,10 @@ class HomeView extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue[900],
+                      primary: MediaQuery.of(context).platformBrightness ==
+                              Brightness.light
+                          ? Colors.blue[400]
+                          : Colors.blueAccent, //Colors.blue[600],
                       fixedSize: const Size(200, 50),
                     ),
                   ),
